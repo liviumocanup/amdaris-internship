@@ -21,17 +21,17 @@
         
 
         // User Service Verification
-        printAll(userService.GetAllUsers());
+        PrintAll(userService.GetAllUsers());
 
         userService.UpdateUser(new User(1, "Alice Smith"));
         userService.AddUser(new User(2, "Bob"));
-        printAll(userService.GetAllUsers());
+        PrintAll(userService.GetAllUsers());
 
         User? user1 = userService.GetUserById(1);
         Console.WriteLine($"Finding user with id {1}: {user1?.Name}\n");
 
         userService.DeleteUser(2);
-        printAll(userService.GetAllUsers());
+        PrintAll(userService.GetAllUsers());
 
         user1 = userService.GetUserById(2);
         Console.WriteLine($"Finding user with id {2}: {user1?.Name ?? "null"}");
@@ -40,17 +40,17 @@
 
         // Song Service Verification
         IEnumerable<Song> allSongs = songService.GetAllSongs();
-        printAll(allSongs);
+        PrintAll(allSongs);
 
         songService.UpdateSong(new Song(1, "Radioactive", "Imagine Dragons", "Rock"));
         songService.AddSong(new Song(4, "Bohemian Rhapsody", "Queen", "Rock"));
-        printAll(songService.GetAllSongs());
+        PrintAll(songService.GetAllSongs());
 
         Song? song = songService.GetSongById(1);
         Console.WriteLine($"Finding song with id {1}: {song?.Title}\n");
 
         songService.DeleteSong(4);
-        printAll(songService.GetAllSongs());
+        PrintAll(songService.GetAllSongs());
 
         song = songService.GetSongById(4);
         Console.WriteLine($"Finding song with id {4}: {song?.Title ?? "null"}");
@@ -64,16 +64,16 @@
         playlistService.AddSongToPlaylist(user.Id, song3.Id);
 
         List<Song> alicesPlaylist = playlistService.GetUserPlaylist(user.Id);
-        printPlaylist(user.Name, alicesPlaylist);
+        PrintPlaylist(user.Name, alicesPlaylist);
 
         playlistService.RemoveSongFromPlaylist(user.Id, song2.Id);
         // songService.DeleteSong(song2.Id);
 
         alicesPlaylist = playlistService.GetUserPlaylist(user.Id);
-        printPlaylist(user.Name, alicesPlaylist);
+        PrintPlaylist(user.Name, alicesPlaylist);
     }
 
-    static void printPlaylist(string userName, List<Song> playlist)
+    static void PrintPlaylist(string userName, List<Song> playlist)
     {
         Console.WriteLine($"{userName}'s Playlist:");
         foreach (Song song in playlist)
@@ -83,7 +83,7 @@
         Console.WriteLine();
     }
 
-    static void printAll(IEnumerable<Entity> entities)
+    static void PrintAll(IEnumerable<Entity> entities)
     {
         Console.WriteLine($"All {entities.First().GetType().Name}s:");
         foreach (Entity entity in entities)
