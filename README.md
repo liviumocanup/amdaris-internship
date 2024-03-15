@@ -1,7 +1,8 @@
-# Amdaris Internship Solutions
-A single repo pointing/containing all the solutions that needed to be uploaded on git.
+# Assignment: Debugging and Exception Handling
+### Assignment instructions
 
-* Assignment: C# and .NET Basics ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Classes in C# ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Strings (branch `string`)
-* Assignment: Arrays, collections, generics (branch `arrays`)
+1. Create methods which checks input arguments and throws exceptions
+2. Create custom exceptions and throw them
+3. Write try-catch-finally block with multiple catch statements
+4. Rethrow exceptions
+5. Add conditional compilation symbols
