@@ -6,15 +6,15 @@ class Program
     {
         try
         {
-            LogIn("admin", "");
+            LogIn("admin", "123");
         }
-        catch (CustomException ex)
+        catch (CredentialsException ex)
         {
-            #if LOG_EXCEPTIONS
+#if LOG_EXCEPTIONS
             Console.WriteLine($"{ex.Message}: {ex.ParameterName}");
-            #else
+#else
             Console.WriteLine(ex.Message);
-            #endif
+#endif
         }
         catch (Exception ex)
         {
@@ -32,7 +32,7 @@ class Program
         catch (ArgumentException ex)
             when (ex.ParamName == "password" || ex.ParamName == "username")
         {
-            throw new CustomException("Invalid Credentials", ex.ParamName, ex);
+            throw new CredentialsException("Invalid Credentials", ex.ParamName, ex);
         }
         catch (ArgumentException)
         {
