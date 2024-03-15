@@ -1,8 +1,9 @@
-# Amdaris Internship Solutions
-A single repo pointing/containing all the solutions that needed to be uploaded on git.
+# Assignment: Delegates and LINQ
+### Assignment instructions
 
-* Assignment: C# and .NET Basics ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Classes in C# ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Strings (branch `string`)
-* Assignment: Arrays, collections, generics (branch `arrays`)
-* Assignment: Debugging and Exception Handling (branch `exceptions`)
+1. Create a collection
+2. Manipulate collection via delegates
+3. Rewrite using anonymous functions
+4. Rewrite using lambda expressions
+5. Using extension methods on the collection
+6. Using Select/where operators on the collection
