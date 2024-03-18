@@ -1,89 +1,105 @@
 ﻿class Program
 {
+    private static readonly string _penguin = "Penguin";
+
     static void Main(string[] args)
     {
-        Dictionary<int, List<String>> zooCages = new(){
-            {1, new List<String>(){"Lion", "Tiger"}},
-            {2, new List<String>(){"Elephant", "Penguin", "Snake"}},
-            {3, new List<String>(){"Penguin", "Seal", "Penguin"}},
-            {4, new List<String>(){"Monkey", "Penguin", "Giraffe"}},
-            {5, new List<String>()}
+        Dictionary<int, List<string>> zooCages = new(){
+            {1, new List<string>(){"Lion", "Tiger"}},
+            {2, new List<string>(){"Elephant", "Penguin", "Snake"}},
+            {3, new List<string>(){"Penguin", "Seal", "Penguin"}},
+            {4, new List<string>(){"Monkey", "Penguin", "Giraffe"}},
+            {5, new List<string>()}
         };
 
         PrintCollection(zooCages);
 
-        // TestDelegateMethod(zooCages);
-        // TestAnonymousMethod(zooCages);
-        // TestLambdaExpression(zooCages);
-        // TestExtensionMethod(zooCages);
+        TestDelegateMethod(zooCages);
+        TestAnonymousMethod(zooCages);
+        TestLambdaExpression(zooCages);
+        TestExtensionMethod(zooCages);
 
-        // PrintCollection(zooCages);
+        PrintCollection(zooCages);
 
         TestLINQ(zooCages);
     }
 
-    public delegate void ModifyCollection(Dictionary<int, List<String>> collection);
+    delegate void AnimalRemover(Dictionary<int, List<string>> collection, string animalToRemove);
 
-    static void TestDelegateMethod(Dictionary<int, List<String>> zooCages)
+    static void TestDelegateMethod(Dictionary<int, List<string>> zooCages)
     {
-        ModifyCollection modifier = RemovePenguins;
-        modifier(zooCages);
+        AnimalRemover remover = RemoveAnimal;
+
+        remover(zooCages, _penguin);
     }
 
-    static void TestAnonymousMethod(Dictionary<int, List<String>> zooCages)
+    static void RemoveAnimal(Dictionary<int, List<string>> cages, string animalToRemove)
     {
-        ModifyCollection modifier = delegate (Dictionary<int, List<String>> collection)
+        foreach (var cage in cages)
         {
-            foreach (var cage in collection)
+            List<string> animals = cage.Value;
+            for (int i = animals.Count - 1; i >= 0; i--)
             {
-                collection[cage.Key] = cage.Value.Where(animal => animal != "Penguin").ToList();
+                if (animals[i] == animalToRemove)
+                {
+                    animals.RemoveAt(i);
+                }
             }
-        };
-        modifier(zooCages);
-    }
-
-    static void TestLambdaExpression(Dictionary<int, List<String>> zooCages)
-    {
-        ModifyCollection modifier = (collection) =>
-        {
-            foreach (var cage in collection)
-            {
-                collection[cage.Key] = cage.Value.Where(animal => animal != "Penguin").ToList();
-            }
-        };
-        modifier(zooCages);
-    }
-
-    static void TestExtensionMethod(Dictionary<int, List<String>> zooCages)
-    {
-        zooCages.RemoveAnimal("Penguin");
-    }
-
-    static void TestLINQ(Dictionary<int, List<String>> zooCages)
-    {
-        foreach (var cage in zooCages)
-        {
-            zooCages[cage.Key] = cage.Value.Where(animal => animal != "Penguin").ToList();
         }
-
-        PrintCollection(zooCages);
     }
 
-    public static void RemovePenguins(Dictionary<int, List<String>> collection)
+    static void TestAnonymousMethod(Dictionary<int, List<string>> zooCages)
     {
-        var removedPenguinsZoo = collection
-            .Select(cage => new { CageNumber = cage.Key, Animals = cage.Value.Where(animal => animal != "Penguin").ToList() })
+        AnimalRemover remover = delegate (Dictionary<int, List<string>> cages, string animalToRemove)
+        {
+            foreach (var cage in cages)
+            {
+                List<string> animals = cage.Value;
+                for (int i = animals.Count - 1; i >= 0; i--)
+                {
+                    if (animals[i] == animalToRemove)
+                    {
+                        animals.RemoveAt(i);
+                    }
+                }
+            }
+        };
+
+        remover(zooCages, _penguin);
+    }
+
+    static void TestLambdaExpression(Dictionary<int, List<string>> zooCages)
+    {
+        AnimalRemover remover = (collection, animalToRemove) =>
+        {
+            foreach (var cage in collection)
+            {
+                collection[cage.Key] = cage.Value.Where(animal => animal != animalToRemove).ToList();
+            }
+        };
+        remover(zooCages, _penguin);
+    }
+
+    static void TestExtensionMethod(Dictionary<int, List<string>> zooCages)
+    {
+        zooCages.RemoveAnimal(_penguin);
+    }
+
+    static void TestLINQ(Dictionary<int, List<string>> zooCages)
+    {
+        var removedPenguinsZoo = zooCages
+            .Select(cage => new { CageNumber = cage.Key, Animals = cage.Value.Where(animal => animal != _penguin).ToList() })
             .ToDictionary(item => item.CageNumber, item => item.Animals);
 
         PrintCollection(removedPenguinsZoo);
     }
 
-    static void PrintCollection(Dictionary<int, List<String>> zooCages)
+    static void PrintCollection(Dictionary<int, List<string>> zooCages)
     {
         Console.WriteLine("Zoo cages:");
         foreach (var cage in zooCages)
         {
-            Console.WriteLine($"Cage {cage.Key}: {String.Join(", ", cage.Value)}");
+            Console.WriteLine($"Cage {cage.Key}: {string.Join(", ", cage.Value)}");
         }
         Console.WriteLine();
     }
