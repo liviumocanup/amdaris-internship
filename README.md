@@ -1,10 +1,7 @@
-# Amdaris Internship Solutions
-A single repo pointing/containing all the solutions that needed to be uploaded on git.
+# Assignment: Advanced LINQ
+### Assignment instructions
 
-* Assignment: C# and .NET Basics ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Classes in C# ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Strings (branch `string`)
-* Assignment: Arrays, collections, generics (branch `arrays`)
-* Assignment: Debugging and Exception Handling (branch `exceptions`)
-* Assignment: Delegates and LINQ (branch `delegates`)
-* Assignment: Advanced LINQ (branch `linq`)
+Create a console application and do the following:
+
+1. Create one or more sequences and use at least one operator of each type
+2. Create an example for each learned method
