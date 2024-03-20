@@ -1,11 +1,23 @@
-# Amdaris Internship Solutions
-A single repo pointing/containing all the solutions that needed to be uploaded on git.
+# Assignment: Disposal and Garbage collection
+### Assignment instructions
 
-* Assignment: C# and .NET Basics ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Classes in C# ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Strings (branch `string`)
-* Assignment: Arrays, collections, generics (branch `arrays`)
-* Assignment: Debugging and Exception Handling (branch `exceptions`)
-* Assignment: Delegates and LINQ (branch `delegates`)
-* Assignment: Advanced LINQ (branch `linq`)
-* Assignment: Disposal and Garbage collection (branch `disposal`)
+You are tasked with developing a console application for sending email notifications to users. The application should allow users to provide their email address as console input and send them an email thanking them for subscribing to the newsletter. Proper resource management and cleanup are crucial to ensure efficient handling of SMTP connections and prevent memory leaks.
+
+
+### Setup
+1. Run the following command in the terminal:
+```bash
+dotnet add package Microsoft.Extensions.Configuration.Json
+dotnet add package Inferno
+```
+
+2. In file `appsettings.json` replace the `Username` placeholder with the email the message will be sent FROM.
+3. In case you are using Gmail, enable 2FA and generate an App Password.
+4. In file `appsettings.json` replace the `Password` placeholder with your password or 16-digit-app-password in case you are using Gmail.
+
+
+### Cleanup
+```bash
+dotnet remove package Microsoft.Extensions.Configuration.Json
+dotnet remove package Inferno
+```
