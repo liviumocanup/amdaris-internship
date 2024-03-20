@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 
 public class AppCredentials
 {
@@ -6,6 +6,7 @@ public class AppCredentials
     public static string Password { get; private set; } = null!;
     public static string Host { get; private set; } = null!;
     public static int Port { get; private set; }
+    private static readonly string _settingsFilename = "appsettings.json";
 
     static AppCredentials()
     {
@@ -14,21 +15,18 @@ public class AppCredentials
 
     private static void Load()
     {
-        IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), _settingsFilename);
+        string jsonString = File.ReadAllText(filePath);
+        using (JsonDocument doc = JsonDocument.Parse(jsonString))
+        {
+            var root = doc.RootElement;
+            var emailSettings = root.GetProperty("EmailSettings");
 
-        var emailSettings = configuration.GetSection("EmailSettings");
-        ValidateAndSetCredentials(emailSettings);
-    }
-
-    private static void ValidateAndSetCredentials(IConfigurationSection emailSettings)
-    {
-        Username = EncryptSetting(emailSettings["Username"], "Email username");
-        Password = EncryptSetting(emailSettings["Password"], "Email password");
-        Host = GetRequiredSetting(emailSettings["Host"], "SMTP host");
-        Port = GetRequiredPort(emailSettings["Port"]);
+            Username = EncryptSetting(emailSettings.GetProperty(nameof(Username)).GetString(), "Email username");
+            Password = EncryptSetting(emailSettings.GetProperty(nameof(Password)).GetString(), "Email password");
+            Host = GetRequiredSetting(emailSettings.GetProperty(nameof(Host)).GetString(), "SMTP host");
+            Port = GetRequiredPort(emailSettings.GetProperty(nameof(Port)).GetInt32());
+        }
     }
 
     private static string EncryptSetting(string? settingValue, string settingName)
@@ -45,10 +43,11 @@ public class AppCredentials
         return value;
     }
 
-    private static int GetRequiredPort(string? portValue)
+    private static int GetRequiredPort(int portValue)
     {
-        if (string.IsNullOrEmpty(portValue) || !int.TryParse(portValue, out int port))
+        if (portValue <= 0)
             throw new ArgumentException("Invalid or missing SMTP port in appsettings.json.");
-        return port;
+        return portValue;
     }
+
 }

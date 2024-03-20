@@ -7,7 +7,6 @@ You are tasked with developing a console application for sending email notificat
 ### Setup
 1. Run the following command in the terminal:
 ```bash
-dotnet add package Microsoft.Extensions.Configuration.Json
 dotnet add package Inferno
 ```
 
@@ -18,6 +17,5 @@ dotnet add package Inferno
 
 ### Cleanup
 ```bash
-dotnet remove package Microsoft.Extensions.Configuration.Json
 dotnet remove package Inferno
 ```

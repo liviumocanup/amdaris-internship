@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <PackageReference Include="Inferno" Version="1.6.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
   </ItemGroup>
 
 
