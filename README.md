@@ -8,3 +8,4 @@ A single repo pointing/containing all the solutions that needed to be uploaded o
 * Assignment: Debugging and Exception Handling (branch `exceptions`)
 * Assignment: Delegates and LINQ (branch `delegates`)
 * Assignment: Advanced LINQ (branch `linq`)
+* Assignment: Disposal and Garbage collection (branch `disposal`)
