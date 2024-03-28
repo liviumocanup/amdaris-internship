@@ -8,35 +8,42 @@ namespace ConsoleApp.Utilities
         {
             while (true)
             {
-                string? input = Console.ReadLine();
+                Console.WriteLine("Enter the channels separated by commas (or 'Q' to quit):");
+                var input = Console.ReadLine();
+
                 if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("Please enter some input.");
                     continue;
                 }
 
-                if (input.Equals("Q", StringComparison.CurrentCultureIgnoreCase))
+                if (input.Equals("Q", StringComparison.OrdinalIgnoreCase))
                 {
                     return new List<NotificationChannelType>();
                 }
 
-                List<NotificationChannelType> selectedTypes = new List<NotificationChannelType>();
-                foreach (string part in input.Split(','))
-                {
-                    if (Enum.TryParse<NotificationChannelType>(part.Trim(), true, out var result))
-                    {
-                        selectedTypes.Add(result);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input, try again.");
-                        selectedTypes.Clear();
-                        break;
-                    }
-                }
-
-                if (selectedTypes.Count > 0) return selectedTypes;
+                var result = ParseChannelInput(input);
+                if (result.Count > 0) return result;
             }
+        }
+
+        private List<NotificationChannelType> ParseChannelInput(string input)
+        {
+            var selectedTypes = new List<NotificationChannelType>();
+            foreach (var part in input.Split(','))
+            {
+                if (Enum.TryParse(part.Trim(), true, out NotificationChannelType result))
+                {
+                    selectedTypes.Add(result);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, try again.");
+                    selectedTypes.Clear();
+                    break;
+                }
+            }
+            return selectedTypes;
         }
 
         public string PromptForInput(string prompt, Func<string, bool> validate)

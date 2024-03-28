@@ -73,7 +73,8 @@ class Program
         return notificationManager;
     }
 
-    static INotificationHandler SetupNotificationHandler(){
+    static INotificationHandler SetupNotificationHandler()
+    {
         // Create notification handler
         INotificationHandler notificationHandler = new NotificationHandler();
 
