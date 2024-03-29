@@ -33,15 +33,7 @@ namespace ConsoleApp.Services
 
         private int? SaveSpeaker(Speaker speaker)
         {
-            try
-            {
-                return _repository.SaveSpeaker(speaker);
-            }
-            catch (Exception)
-            {
-                //in case the db call fails 
-                throw;
-            }
+            return _repository.SaveSpeaker(speaker);
         }
     }
 }

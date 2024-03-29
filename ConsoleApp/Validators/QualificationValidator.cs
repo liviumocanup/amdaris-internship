@@ -18,7 +18,7 @@ namespace ConsoleApp.Validators
                    (IsUsingModernBrowser(speaker) && !IsUsingRestrictedEmailDomain(speaker));
         }
 
-        private bool HasSufficientExperienceOrCertifications(Speaker speaker)
+        private static bool HasSufficientExperienceOrCertifications(Speaker speaker)
         {
             return speaker.ExperienceYears > RequiredExperienceYears ||
                    speaker.HasBlog ||
@@ -30,7 +30,7 @@ namespace ConsoleApp.Validators
             return _preferredEmployers.Contains(speaker.Employer);
         }
 
-        private bool IsUsingModernBrowser(Speaker speaker)
+        private static bool IsUsingModernBrowser(Speaker speaker)
         {
             return speaker.Browser.Name != WebBrowser.BrowserName.InternetExplorer ||
                    speaker.Browser.MajorVersion >= RequiredBrowserVersion;
@@ -38,8 +38,9 @@ namespace ConsoleApp.Validators
 
         private bool IsUsingRestrictedEmailDomain(Speaker speaker)
         {
-            var emailDomain = speaker.Email.Split('@').Last();
-            return _domains.Contains(emailDomain);
+            var emailDomain = speaker.Email.Split('@');
+            var domain = emailDomain[emailDomain.Length - 1];
+            return _domains.Contains(domain);
         }
     }
 }

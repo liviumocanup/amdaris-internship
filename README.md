@@ -51,3 +51,24 @@
 3. **Decompose Conditional**: Complex conditional logic in the registration and validation process was refactored into clearer, more manageable logic within the new services.
 4. **Rename Method/Variable**: Methods and variables were named to clearly describe their purpose, improving readability.
 5. **Replace Conditional with Polymorphism**: Introduced interfaces for services to move towards using polymorphism to handle variations in behavior more cleanly, especially with validation logic.
+
+## SonarQube Set Up
+
+You will need Java 17 in `PATH` in order to run SonarQube.
+
+1. Start SonarQube in Docker:
+```bash
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+* `-d` runs the container in detached mode (in the background).
+* `--name sonarqube` assigns the container a name (sonarqube).
+* `-p 9000:9000` maps port 9000 of the container to port 9000 on your host, allowing you to access the SonarQube web interface via http://localhost:9000.
+* `sonarqube` specifies the image to use. By default, this pulls the latest version of SonarQube from Docker Hub.
+
+2. Install Scanner .NET Core Global Tool
+```bash
+dotnet tool install --global dotnet-sonarscanner
+```
+
+3. Follow the instructions on http://localhost:9000

@@ -13,7 +13,7 @@ namespace ConsoleApp.Validators
             return true;
         }
 
-        private void CheckNullOrWhitespace(string value, string paramName)
+        private static void CheckNullOrWhitespace(string value, string paramName)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
