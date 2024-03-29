@@ -11,3 +11,4 @@ A single repo pointing/containing all the solutions that needed to be uploaded o
 * Assignment: Disposal and Garbage collection (branch `disposal`)
 * Assignment: Filesystem and streams ([link](https://github.com/liviumocanup/streamphony-asp-net))
 * Assignment: SOLID principles (branch `solid`)
+* Assignment: Clean Code (branch `clean`)
