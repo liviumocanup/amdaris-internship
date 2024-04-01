@@ -1,6 +1,6 @@
 using ConsoleApp.Models;
-using ConsoleApp.Observer;
-using ConsoleApp.Channels;
+using ConsoleApp.Models.Observer;
+using ConsoleApp.Channels.Manager;
 
 namespace ConsoleApp.Services
 {

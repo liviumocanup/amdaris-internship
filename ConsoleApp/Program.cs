@@ -1,4 +1,5 @@
 using ConsoleApp.Channels;
+using ConsoleApp.Channels.Manager;
 using ConsoleApp.Models;
 using ConsoleApp.Repositories;
 using ConsoleApp.Services;

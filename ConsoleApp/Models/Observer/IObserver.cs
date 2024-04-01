@@ -1,7 +1,6 @@
-using ConsoleApp.Channels;
-using ConsoleApp.Models;
+using ConsoleApp.Channels.Manager;
 
-namespace ConsoleApp.Observer
+namespace ConsoleApp.Models.Observer
 {
     public interface IObserver
     {

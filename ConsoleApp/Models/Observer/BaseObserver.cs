@@ -1,7 +1,7 @@
 using ConsoleApp.Channels;
-using ConsoleApp.Observer;
+using ConsoleApp.Channels.Manager;
 
-namespace ConsoleApp.Models
+namespace ConsoleApp.Models.Observer
 {
     public abstract class BaseObserver : BaseEntity, IObserver
     {
@@ -18,7 +18,7 @@ namespace ConsoleApp.Models
         public virtual void Update(Order order, INotificationManager notificationManager)
         {
             string booksTitles = order.Books.Aggregate("", (acc, book) => acc + book?.Title + ", ");
-            
+
             string subject = $"Order {order.Id} Update";
             string message = $"Order for books {booksTitles} is now {order.Status}.";
 

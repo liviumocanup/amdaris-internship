@@ -1,4 +1,4 @@
-namespace ConsoleApp.Channels
+namespace ConsoleApp.Channels.Manager
 {
     public interface INotificationManager
     {
