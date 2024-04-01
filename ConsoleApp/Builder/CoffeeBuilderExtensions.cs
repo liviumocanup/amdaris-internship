@@ -11,12 +11,15 @@ namespace ConsoleApp.Builder
 
         public static CoffeeBuilder MakeCappuccino(this CoffeeBuilder builder, MilkType milkType)
         {
-            return builder.AddBlackCoffee().AddMilk(milkType);
+            return builder.AddBlackCoffee()
+                            .AddMilk(milkType);
         }
 
         public static CoffeeBuilder MakeFlatWhite(this CoffeeBuilder builder, MilkType milkType)
         {
-            return builder.AddBlackCoffee().AddBlackCoffee().AddMilk(milkType);
+            return builder.AddBlackCoffee()
+                            .AddBlackCoffee()
+                            .AddMilk(milkType);
         }
     }
 }
