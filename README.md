@@ -1,16 +1,12 @@
-# Amdaris Internship Solutions
-A single repo pointing/containing all the solutions that needed to be uploaded on git.
+# Assignment: Behavioral Design Patterns
+### Assignment instructions
 
-* Assignment: C# and .NET Basics ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Classes in C# ([link](https://github.com/liviumocanup/basics-task))
-* Assignment: Strings (branch `string`)
-* Assignment: Arrays, collections, generics (branch `arrays`)
-* Assignment: Debugging and Exception Handling (branch `exceptions`)
-* Assignment: Delegates and LINQ (branch `delegates`)
-* Assignment: Advanced LINQ (branch `linq`)
-* Assignment: Disposal and Garbage collection (branch `disposal`)
-* Assignment: Filesystem and streams ([link](https://github.com/liviumocanup/streamphony-asp-net))
-* Assignment: SOLID principles (branch `solid`)
-* Assignment: Clean Code (branch `clean`)
-* Assignment: Creational Design Patterns (branch `creational`)
-* Assignment: Behavioral Design Patterns (branch `behavioral`)
+You are tasked with designing and implementing an order processing system for an online bookstore. The system should allow users to place orders for books and process those orders efficiently. Your implementation should focus on applying a specific behavioral design pattern that addresses the requirements of the scenario.
+
+**Functional Requirements**:
+1. When a customer places an order, they should receive notifications about the order status updates via email or SMS (Use just Console.WriteLine to simulate sending and email or SMS)
+2. Staff members responsible for order fulfillment should receive notifications when new orders are placed and when orders are ready for shipping.
+3. Implement a mechanism for customers and staff to subscribe or unsubscribe from order status notifications.
+4. Everything should be implemented in one single console application
+
+## Observer Pattern
