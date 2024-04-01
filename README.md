@@ -13,3 +13,4 @@ A single repo pointing/containing all the solutions that needed to be uploaded o
 * Assignment: SOLID principles (branch `solid`)
 * Assignment: Clean Code (branch `clean`)
 * Assignment: Creational Design Patterns (branch `creational`)
+* Assignment: Behavioral Design Patterns (branch `behavioral`)
