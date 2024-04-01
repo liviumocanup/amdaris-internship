@@ -4,7 +4,10 @@ namespace ConsoleApp.Models
     {
         Placed,
         Processing,
+        ReadyForShipping,
         Shipped,
-        Delivered
+        Delivered,
+        Completed,
+        Cancelled
     }
 }

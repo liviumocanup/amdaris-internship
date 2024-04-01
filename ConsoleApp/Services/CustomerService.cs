@@ -1,3 +1,6 @@
+using ConsoleApp.Models;
+using ConsoleApp.Repositories;
+
 namespace ConsoleApp.Services
 {
     public class CustomerService

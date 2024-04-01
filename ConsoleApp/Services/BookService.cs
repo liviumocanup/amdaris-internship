@@ -1,6 +1,9 @@
+using ConsoleApp.Models;
+using ConsoleApp.Repositories;
+
 namespace ConsoleApp.Services
 {
-    public BookService
+    public class BookService
     {
         private IRepository<Book> _bookRepository;
 

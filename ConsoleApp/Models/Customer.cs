@@ -1,14 +1,7 @@
 namespace ConsoleApp.Models
 {
-    public class Customer : BaseEntity, ISubscriber
+    public class Customer(string name, string email, string number) : BaseObserver(email, number)
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Number { get; set; }
-
-        public void Update(Order order)
-        {
-            Console.WriteLine($"Email to {Email}: Your order {order.Id} is now {order.Status}.");
-        }
+        public string Name { get; set; } = name;
     }
 }

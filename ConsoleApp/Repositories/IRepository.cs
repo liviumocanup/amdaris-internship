@@ -1,3 +1,5 @@
+using ConsoleApp.Models;
+
 namespace ConsoleApp.Repositories
 {
     public interface IRepository<T> where T : BaseEntity
