@@ -4,13 +4,13 @@ namespace ConsoleApp.Decorator
 {
     public class BackgroundColorDecorator(IText text, string backgroundColor) : TextDecorator(text)
     {
-        private readonly string _backgroundColor = backgroundColor;
+        public string Color { get; } = backgroundColor;
 
         public override string GetFormattedText()
         {
             if (IsEnabled)
             {
-                return $"<background={_backgroundColor}>" + _textComponent.GetFormattedText() + "</background>";
+                return $"<background={Color}>" + _textComponent.GetFormattedText() + "</background>";
             }
 
             return _textComponent.GetFormattedText();
